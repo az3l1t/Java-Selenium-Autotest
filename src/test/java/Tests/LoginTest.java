@@ -2,7 +2,9 @@ package Tests;
 
 import static org.junit.Assert.assertTrue;
 
+import java.io.IOException;
 import java.time.Duration;
+import java.util.NoSuchElementException;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.AfterClass;
@@ -10,6 +12,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.ElementNotInteractableException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -39,26 +42,52 @@ public class LoginTest {
 
     }
 
-    @SuppressWarnings("deprecation")
     @Test
     public void TestOfAuth() {
+        /*
+         * Метод пробы пяти основных классов ввода данных
+         */
+        loginPage.FillList();
+        for(int i=0;i<loginPage.ListOfEqClasses.size();i++){
+            loginPage.SendKeysLogin(loginPage.ListOfEqClasses.get(i));
+            loginPage.ClickOnLoginButton();
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(6));
+            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"field:input-login:hint\"]")));
+            try{
+                loginPage.TapKeys();
+                loginPage.ClearKeys();
+            }catch(NoSuchElementException e){
+
+            }
+        }
+
+    }
+
+    @Test
+    public void mainAccountAuth(){
         loginPage.SendKeysLogin("onelive32111@mail.ru");
         loginPage.ClickOnLoginButton();
         WebDriverWait wait_first = new WebDriverWait(driver, Duration.ofSeconds(2));
         wait_first.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"passp-field-passwd\"]")));
         loginPage.SendKeysPassword("Chemege1.");
         loginPage.ClickOnLoginButton();
+    }
 
+    @SuppressWarnings("deprecation")
+    @Test
+    public void compOfAccountNameAndExit(){
         WebDriverWait wait_second = new WebDriverWait(driver, Duration.ofSeconds(3));
         wait_second.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"__next\"]/div/header/div/div[2]/button/div/div[1]/img")));
         profilePage.clickOnMenu();
-
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-        /*
-         * User moment needs to be solved;
-         */
-        driver.findElement(By.xpath("//*[contains(@class,'UserId-FirstLine')]"));
-        //Assert.assertEquals(user, userName);
+        String user = profilePage.getName();
+        Assert.assertEquals(user, userName);
+        profilePage.exitButton();
+    }
+
+    @AfterClass
+    public void AfterAll(){
+        driver.close();
     }
 
 }
