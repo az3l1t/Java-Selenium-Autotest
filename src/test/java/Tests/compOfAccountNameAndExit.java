@@ -35,17 +35,28 @@ public class compOfAccountNameAndExit {
     @SuppressWarnings("deprecation")
     @Test
     public void compOfAccountNameAndExit(){
+
+        loginPage.SendKeysLogin("onelive32111@mail.ru");
+        loginPage.ClickOnLoginButton();
+        WebDriverWait wait_first = new WebDriverWait(driver, Duration.ofSeconds(2));
+        wait_first.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"passp-field-passwd\"]")));
+        loginPage.SendKeysPassword("Chemege1.");
+        loginPage.ClickOnLoginButton();
+
         WebDriverWait wait_second = new WebDriverWait(driver, Duration.ofSeconds(3));
         wait_second.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"__next\"]/div/header/div/div[2]/button/div/div[1]/img")));
         profilePage.clickOnMenu();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        /*
+         * Исправить ошибку поиска выхода и инициализации user
+         */
         String user = profilePage.getName();
         Assert.assertEquals(user, userName);
         profilePage.exitButton();
     }
 
     @AfterClass
-    public void AfterAll(){
+    public static void AfterAll(){
         driver.close();
     }
 }
