@@ -1,5 +1,7 @@
 package Tests;
 
+import static org.junit.Assert.assertEquals;
+
 import java.time.Duration;
 
 import org.junit.AfterClass;
@@ -13,7 +15,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import Files.LoginPage;
 import Files.ProfilePage;
-import junit.framework.Assert;
 
 public class compOfAccountNameAndExit {
     public static LoginPage loginPage;
@@ -51,7 +52,7 @@ public class compOfAccountNameAndExit {
          * Исправить ошибку поиска выхода и инициализации user
          */
         String user = profilePage.getName();
-        Assert.assertEquals(user, userName);
+        assertEquals(user, userName);
         profilePage.exitButton();
     }
 
