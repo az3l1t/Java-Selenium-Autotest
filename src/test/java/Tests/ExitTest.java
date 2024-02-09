@@ -16,7 +16,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import Files.LoginPage;
 import Files.ProfilePage;
 
-public class compOfAccountNameAndExit {
+public class ExitTest {
     public static LoginPage loginPage;
     private static WebDriver driver;
     private static ProfilePage profilePage;

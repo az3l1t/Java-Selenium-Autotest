@@ -42,7 +42,7 @@ public class LoginTest {
     }
 
     @Test
-    public void TestOfAuth() {
+    public void testOfAuth() {
         /*
          * Метод пробы пяти основных классов ввода данных
          */
