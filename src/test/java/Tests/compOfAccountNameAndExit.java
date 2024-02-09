@@ -71,6 +71,9 @@ public class compOfAccountNameAndExit {
         String user = profilePage.getName();
         assertEquals(user, userName);
         profilePage.exitButton();
+        /*
+         * switchTo().defaultContent() - выйти обратно
+         */
     }
 
     @AfterClass
