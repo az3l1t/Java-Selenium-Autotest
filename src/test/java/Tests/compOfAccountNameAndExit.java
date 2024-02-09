@@ -33,24 +33,41 @@ public class compOfAccountNameAndExit {
 
     }
 
-    @SuppressWarnings("deprecation")
     @Test
     public void compOfAccountNameAndExit(){
+        /*
+         * Отправление позитивных ключей для входа
+         * в аккаунт
+         */
 
         loginPage.SendKeysLogin("onelive32111@mail.ru");
         loginPage.ClickOnLoginButton();
+        /*
+         * Ожидание появления ввода
+         * пароля
+         */
         WebDriverWait wait_first = new WebDriverWait(driver, Duration.ofSeconds(2));
         wait_first.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"passp-field-passwd\"]")));
+        /*
+         * Ввод пароля
+         */
         loginPage.SendKeysPassword("Chemege1.");
         loginPage.ClickOnLoginButton();
+        /*
+         * Вход в аккаунт и переход
+         * в аккаунт-страницу
+         * поиск иконки аккаунта и нажатие по ней
+         */
 
         WebDriverWait wait_second = new WebDriverWait(driver, Duration.ofSeconds(3));
         wait_second.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"__next\"]/div/header/div/div[2]/button/div/div[1]/img")));
         profilePage.clickOnMenu();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         /*
-         * Исправить ошибку поиска выхода и инициализации user
+         * Переход на всплювабщий фрейм
+         * и проверка данных со значением в классе
+         * + выход из аккаунта во фрейме
          */
+        driver.switchTo().frame(profilePage.getFrame());
         String user = profilePage.getName();
         assertEquals(user, userName);
         profilePage.exitButton();

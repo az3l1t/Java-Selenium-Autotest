@@ -20,14 +20,22 @@ public class ProfilePage {
     @FindBy(xpath="//*[@id=\"__next\"]/div/header/div/div[2]/button")
     private WebElement Menu;
 
-    @FindBy(xpath = "//*[contains(@class,'UserId-FirstLine')]")
+    @FindBy(xpath = "//*[@id=\"root\"]/div/div/div/div/div[1]/div[2]/span[1]")
     private WebElement NameElement;
 
+    @FindBy(xpath = "//*[@id=\"__next\"]/div/header/div/div[2]/div/div/iframe")
+    private WebElement frame;
+
+    @FindBy(xpath = "//*[@id=\"root\"]/div/div/div/div/div[6]/a[2]/div[2]/span")
     private WebElement ExitButton;
 
     public String getName(){
         String name = NameElement.getText();
         return name;
+    }
+
+    public WebElement getFrame(){
+        return frame;
     }
 
     public void clickOnMenu(){
