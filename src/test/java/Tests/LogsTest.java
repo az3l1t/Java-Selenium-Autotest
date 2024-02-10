@@ -57,6 +57,20 @@ public class LogsTest {
         wait_second.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"__next\"]/div/main/div/section[3]/div/div[3]/a/div[2]/div[1]/div/div/span")));
         informationPage.tapAllDocsElement();
 
+        informationPage.tapPassport();
+
+
+        String nameOfRoot = informationPage.getName();
+        System.out.println(nameOfRoot);
+
+        //driver.switchTo().frame(informationPage.getFrame());
+        /*
+         * Доделать систему сбора информации
+         * и инициализация логов
+         */
+        String passportNumber = informationPage.getPassportNumber();
+        // String
+
     }
 
 }
