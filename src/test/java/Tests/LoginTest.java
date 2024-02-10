@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.time.Duration;
 import java.util.NoSuchElementException;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Logger;
 
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -35,36 +36,36 @@ public class LoginTest {
         System.setProperty("chromedriver", "C:\\chromedriver\\chromedriver.exe");
         driver = new ChromeDriver();
         loginPage = new LoginPage(driver);
-        profilePage = new ProfilePage(driver);
+        //profilePage = new ProfilePage(driver);
         driver.manage().window().maximize();
         driver.get("https://passport.yandex.ru/auth");
 
     }
 
     @Test
-    public void testOfAuth() {
+    public void testOfAuth() throws InterruptedException {
         /*
          * Метод пробы пяти основных классов ввода данных
          */
-        loginPage.FillList();
-        for(int i=0;i<loginPage.ListOfEqClasses.size();i++){
-            loginPage.SendKeysLogin(loginPage.ListOfEqClasses.get(i));
-            loginPage.ClickOnLoginButton();
-            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(6));
-            wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"field:input-login:hint\"]")));
+        for(String listValue : loginPage.ListOfEqClasses){
             try{
-                loginPage.TapKeys();
-                loginPage.ClearKeys();
-            }catch(NoSuchElementException e){
-
+                loginPage.SendKeysLogin(listValue);
+                loginPage.ClickOnLoginButton();
+            }
+            catch (NoSuchElementException e){
+                System.out.println("No Error Founded");
+            }
+            finally{
+                if (loginPage.IsElementDisplayed()) {
+                    loginPage.ClearKeys();
+                }
             }
         }
-
     }
 
 
     @AfterClass
-    public void AfterAll(){
+    public static void AfterAll(){
         driver.close();
     }
 

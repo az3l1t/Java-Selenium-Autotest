@@ -22,8 +22,11 @@ public class LoginPage {
         this.driver = driver;
     }
 
-    @FindBy(xpath = "/html/body/div/div/div[2]/div[2]/div/div/div[2]/div[3]/div/div/div/div/form/div/div[2]/div[2]/div/div/span/input")
+    @FindBy(xpath = "//*[@id='passp-field-login']")//
     private WebElement LoginField;
+
+    ////*[@id="passp-field-login"]
+    ///html/body/div/div/div[2]/div[2]/div/div/div[2]/div[3]/div/div/div/div/form/div/div[2]/div[2]/div/div/span[2]/input
 
     @FindBy(xpath = "//*[@id=\'passp:sign-in\']")
     private WebElement LoginButton;
@@ -65,4 +68,9 @@ public class LoginPage {
         ListOfEqClasses.add(ForthTryEquivalenceClasses);
         ListOfEqClasses.add(FifthTryEquivalenceClasses);
     }
+
+    public boolean IsElementDisplayed() {
+        return LoginField.isDisplayed();
+    }
+
 }
