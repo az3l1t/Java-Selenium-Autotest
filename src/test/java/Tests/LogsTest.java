@@ -1,6 +1,9 @@
 package Tests;
 
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -35,7 +38,7 @@ public class LogsTest {
     }
 
     @Test
-    public void LogginTest(){
+    public void LogginTest() throws InterruptedException{
         loginPage.SendKeysLogin("onelive32111@mail.ru");
         loginPage.ClickOnLoginButton();
         /*
@@ -68,8 +71,18 @@ public class LogsTest {
          * Доделать систему сбора информации
          * и инициализация логов
          */
+        WebDriverWait wait_third = new WebDriverWait(driver, Duration.ofSeconds(4));
+        wait_third.until(ExpectedConditions.visibilityOfElementLocated(By.xpath
+        ("//div[@class='Slot_root__jYlNI Slot_content__XYDYF alignment-center_root__ndulA color-inherit_root__OQmPQ Slot_direction_vertical__I3MEt FieldItem_content__adUIk']")));
         String passportNumber = informationPage.getPassportNumber();
-        // String
+        String words[] = passportNumber.split(" ");
+        System.out.println(Arrays.toString(words));
+        /*
+         * Добавить логгирование и try-catch
+         */
+        //Thread.sleep(5000);
+        System.out.println(words);
+        // 
 
     }
 

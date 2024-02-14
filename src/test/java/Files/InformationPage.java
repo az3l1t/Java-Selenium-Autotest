@@ -28,7 +28,7 @@ public class InformationPage {
     @FindBy(xpath = "//h2[@data-testid='heading-title']")
     public WebElement Name;
 
-    @FindBy(xpath = "/html/body/div[2]/div[2]/div/div/div/div/div/div[3]/section[2]/div/div/div[1]/div/div[1]/span[2]")
+    @FindBy(xpath = "//div[@class='Slot_root__jYlNI Slot_content__XYDYF alignment-center_root__ndulA color-inherit_root__OQmPQ Slot_direction_vertical__I3MEt FieldItem_content__adUIk']//span[@class='Text_root__J8eOj FieldItem_text__jjdBN']")
     public WebElement PassportNumber;
 
     public String getPassportNumber(){
