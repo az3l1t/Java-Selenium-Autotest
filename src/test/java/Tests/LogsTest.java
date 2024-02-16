@@ -74,9 +74,16 @@ public class LogsTest {
         WebDriverWait wait_third = new WebDriverWait(driver, Duration.ofSeconds(4));
         wait_third.until(ExpectedConditions.visibilityOfElementLocated(By.xpath
         ("//div[@class='Slot_root__jYlNI Slot_content__XYDYF alignment-center_root__ndulA color-inherit_root__OQmPQ Slot_direction_vertical__I3MEt FieldItem_content__adUIk']")));
-        String passportNumber = informationPage.getPassportNumber();
-        String words[] = passportNumber.split(" ");
-        System.out.println(Arrays.toString(words));
+        // String passportNumber = informationPage.getPassportNumber();
+        // String dateOfBirth = informationPage.getDateOfBirth();
+        // String words[] = passportNumber.split(" ");
+        // System.out.println(Arrays.toString(words));
+        // System.out.println(passportNumber);
+        // System.out.println(dateOfBirth);
+        System.out.println(informationPage.setArray(0));
+        System.out.println(informationPage.setArray(4));
+        System.out.println(informationPage.setArray(8));
+        System.out.println(informationPage.setArray(9));
         /*
          * Добавить логгирование и try-catch
          */

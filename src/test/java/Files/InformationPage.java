@@ -1,5 +1,9 @@
 package Files;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -28,11 +32,10 @@ public class InformationPage {
     @FindBy(xpath = "//h2[@data-testid='heading-title']")
     public WebElement Name;
 
-    @FindBy(xpath = "//div[@class='Slot_root__jYlNI Slot_content__XYDYF alignment-center_root__ndulA color-inherit_root__OQmPQ Slot_direction_vertical__I3MEt FieldItem_content__adUIk']//span[@class='Text_root__J8eOj FieldItem_text__jjdBN']")
-    public WebElement PassportNumber;
-
-    public String getPassportNumber(){
-        return PassportNumber.getText();
+    public String setArray(int number){
+        List<WebElement> list = driver.findElements(By.xpath("//div[@class='Slot_root__jYlNI Slot_content__XYDYF alignment-center_root__ndulA color-inherit_root__OQmPQ Slot_direction_vertical__I3MEt FieldItem_content__adUIk']//span[@class='Text_root__J8eOj FieldItem_text__jjdBN']"));
+        // list = new ArrayList<>();
+        return list.get(number).getText();
     }
 
     public String getName(){
