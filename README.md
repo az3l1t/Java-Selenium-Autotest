@@ -9,3 +9,8 @@
 
 # Тестирование сборки логов и информации о документах с сайта
 ![image](https://github.com/az3l1t/Java-Selenium-Autotest/assets/126178814/922c9223-2154-4e5f-9dac-d968c7a084e0)
+# Сбор паспортной информации с сайта.
+P.S чтобы имена и т.д выводились на русском, меняете 
+Encoding System у вас в IDE на WINDOWS 1251
+![image](https://github.com/az3l1t/Java-Selenium-Autotest/assets/126178814/d70085dc-8268-401f-87a7-1505dd21f3d4)
+
