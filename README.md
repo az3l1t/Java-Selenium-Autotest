@@ -12,4 +12,5 @@
 # Сбор паспортной информации с сайта.
 P.S чтобы имена и т.д выводились на русском, меняете 
 Encoding System у вас в IDE на WINDOWS 1251
+![image](https://github.com/az3l1t/Java-Selenium-Autotest/assets/126178814/35311f21-abf1-45cb-9cb0-b038bc016773)
 
