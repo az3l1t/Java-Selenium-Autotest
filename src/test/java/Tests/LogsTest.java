@@ -80,8 +80,6 @@ public class LogsTest {
         /*
          * Добавить логгирование и try-catch
          */
-        //Thread.sleep(5000);
-        System.out.println(words);
         // 
 
     }
