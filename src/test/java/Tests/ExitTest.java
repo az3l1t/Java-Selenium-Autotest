@@ -20,7 +20,7 @@ public class ExitTest {
     public static LoginPage loginPage;
     private static WebDriver driver;
     private static ProfilePage profilePage;
-    private String userName = "Norair Avanesian";
+    private String userName = "#YourName";
 
     @BeforeClass
     public static void BeforeAll() {
@@ -40,7 +40,7 @@ public class ExitTest {
          * в аккаунт
          */
 
-        loginPage.SendKeysLogin("onelive32111@mail.ru");
+        loginPage.SendKeysLogin("#LoginOfYandex");
         loginPage.ClickOnLoginButton();
         /*
          * Ожидание появления ввода
@@ -51,7 +51,7 @@ public class ExitTest {
         /*
          * Ввод пароля
          */
-        loginPage.SendKeysPassword("Chemege1.");
+        loginPage.SendKeysPassword("#PasswordOfYandex");
         loginPage.ClickOnLoginButton();
         /*
          * Вход в аккаунт и переход

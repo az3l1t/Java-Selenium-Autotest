@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import java.util.logging.Logger;
@@ -36,14 +37,14 @@ public class LogsTest {
         //profilePage = new ProfilePage(driver);
         driver.manage().window().maximize();
         driver.get("https://passport.yandex.ru/auth");
-        logger.info("Переход на страницу авторизации");
+        logger.info("Go to the authorization page");
     }
 
     @Test
     public void LogginTest() throws InterruptedException{
-        loginPage.SendKeysLogin("onelive32111@mail.ru");
+        loginPage.SendKeysLogin("#LoginOfYandex");
         loginPage.ClickOnLoginButton();
-        logger.info("Введен логин");
+        logger.info("A login has been entered");
         /*
          * Ожидание появления ввода
          * пароля
@@ -53,9 +54,9 @@ public class LogsTest {
         /*
          * Ввод пароля
          */
-        loginPage.SendKeysPassword("Chemege1.");
+        loginPage.SendKeysPassword("#PasswordOfYandex");
         loginPage.ClickOnLoginButton();
-        logger.info("Введен пароль");
+        logger.info("The password is entered");
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"__next\"]/div/div/nav/ul/li[2]/a")));
 
@@ -64,7 +65,7 @@ public class LogsTest {
         wait_second.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"__next\"]/div/main/div/section[3]/div/div[3]/a/div[2]/div[1]/div/div/span")));
         informationPage.tapAllDocsElement();
         informationPage.tapPassport();
-        logger.info("Перейден на паспорт-информацию");
+        logger.info("Switched to passport information");
 
         //driver.switchTo().frame(informationPage.getFrame());
         /*
@@ -75,21 +76,26 @@ public class LogsTest {
         wait_third.until(ExpectedConditions.visibilityOfElementLocated(By.xpath
         ("//div[@class='Slot_root__jYlNI Slot_content__XYDYF alignment-center_root__ndulA color-inherit_root__OQmPQ Slot_direction_vertical__I3MEt FieldItem_content__adUIk']")));
         System.out.println(informationPage.setArray(0));
-        logger.info("Данные получены!");
+        logger.info("The data has been received!");
         System.out.println(informationPage.setArray(1));
-        logger.info("Данные получены!");
+        logger.info("The data has been received!");
         System.out.println(informationPage.setArray(2));
-        logger.info("Данные получены!");
+        logger.info("The data has been received!");
         System.out.println(informationPage.setArray(4));
-        logger.info("Данные получены!");
+        logger.info("The data has been received!");
         System.out.println(informationPage.setArray(8));
-        logger.info("Данные получены!");
+        logger.info("The data has been received!");
         System.out.println(informationPage.setArray(9));
-        logger.info("Данные получены!");
+        logger.info("The data has been received!");
         /*
          * Добавить логгирование и try-catch
          */
 
+    }
+
+    @AfterClass
+    public static void AfterAll(){
+        driver.close();
     }
 
 }
